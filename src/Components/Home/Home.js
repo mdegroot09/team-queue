@@ -8,9 +8,9 @@ export default class Home extends Component {
       zip: '',
       dist: 15,
       agents:[
-        {name: 'Wyatt', zip: 84101},
-        {name: 'JoAnn', zip: 84119},
-        {name: 'Eric', zip: 84604}
+        {name: 'Wyatt Koeven', address: 1, zip: 84101},
+        {name: 'JoAnn Ortega-Petty', address: 1, zip: 84119},
+        {name: 'Eric Nelson', address: 1, zip: 84604}
       ]
     }
     // var interval = ''
@@ -42,8 +42,9 @@ export default class Home extends Component {
       let dist = zipcodes.distance(agent.zip, this.state.zip)
       if (dist <= this.state.dist){
         return (
-          <div key={i}>
-            <h4>{agent.name} <br/> Distance: {dist}</h4>
+          <div key={i} className='agentLine'>
+            <div className='agentName'>{agent.name}</div>
+            <div className='agentDist'>Distance: {dist}</div>
           </div>
         )
       } else return
@@ -68,7 +69,13 @@ export default class Home extends Component {
         <br/>
         <input onChange={(e)=>this.handleInput('zip', e.target.value)} type="number" placeholder='zip code'/>
         {/* <button onClick={()=>this.calcDist()}>Get Distance</button> */}
-        {list}
+        <div className='agentTable'>
+          <div className='agentLine'>
+            <div className='agentName' style={{fontWeight: '700'}}>Name</div>
+            <div className='agentDist' style={{fontWeight: '700'}}>Distance</div>
+          </div>
+          {list}
+        </div>
       </div>
     )
   }
