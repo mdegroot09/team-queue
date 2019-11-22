@@ -49,8 +49,6 @@ export default class Home extends Component {
         return agent
       } else return false
     })
-    console.log('zip:', this.state.zip)
-    console.log('agentsFilter:', agentsFilter)
     let list = agentsFilter.map((agent, i) => {
       let dist = zipcodes.distance(agent.zip, this.state.zip)
       // if (dist <= this.state.dist){
