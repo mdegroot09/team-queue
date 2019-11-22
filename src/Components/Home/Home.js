@@ -8,9 +8,9 @@ export default class Home extends Component {
       zip: '',
       dist: 15,
       agents:[
-        {name: 'Wyatt Koeven', city: 'Salt Lake City', zip: 84101},
-        {name: 'JoAnn Ortega-Petty', city: 'Taylorsville', zip: 84119},
-        {name: 'Eric Nelson', city: 'Cedar Hills', zip: 84604},
+        {name: 'Wyatt Koeven', city: 'Salt Lake City', zip: 84111},
+        {name: 'JoAnn Ortega-Petty', city: 'Taylorsville', zip: 84129},
+        {name: 'Eric Nelson', city: 'Cedar Hills', zip: 84062},
         {name: 'Jeremy Doggett', city: 'Sandy', zip: 84092},
         {name: 'Jake Richins', city: 'Draper', zip: 84020},
         {name: 'Juan Gomez', city: 'Saratoga Springs', zip: 84045},
