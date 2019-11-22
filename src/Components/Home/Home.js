@@ -8,13 +8,13 @@ export default class Home extends Component {
       zip: '',
       dist: 15,
       agents:[
-        {name: 'Wyatt Koeven', city: 'Salt Lake City', zip: 84111},
-        {name: 'JoAnn Ortega-Petty', city: 'Taylorsville', zip: 84129},
-        {name: 'Eric Nelson', city: 'Cedar Hills', zip: 84062},
-        {name: 'Jeremy Doggett', city: 'Sandy', zip: 84092},
-        {name: 'Jake Richins', city: 'Draper', zip: 84020},
-        {name: 'Juan Gomez', city: 'Saratoga Springs', zip: 84045},
-        {name: 'Kodi Paulson', city: 'Eagle Mountain', zip: 84005}
+        {name: 'Wyatt Koeven', city: 'Salt Lake City', zip: 84111, last: 1574432837000},
+        {name: 'JoAnn Ortega-Petty', city: 'Taylorsville', zip: 84129, last: 1574321737000},
+        {name: 'Eric Nelson', city: 'Cedar Hills', zip: 84062, last: 1574210637000},
+        {name: 'Jeremy Doggett', city: 'Sandy', zip: 84092, last: 1574109537000},
+        {name: 'Jake Richins', city: 'Draper', zip: 84020, last: 1574098437000},
+        {name: 'Juan Gomez', city: 'Saratoga Springs', zip: 84045, last: 1573987337000},
+        {name: 'Kodi Paulson', city: 'Eagle Mountain', zip: 84005, last: 1573876237000}
       ]
     }
     // var interval = ''
@@ -42,7 +42,8 @@ export default class Home extends Component {
 
   render(){
     let {agents} = this.state
-    let list = agents.map((agent, i) => {
+    let agentsList = agents.sort((a, b) => (a.last > b.last) ? 1 : -1)
+    let list = agentsList.map((agent, i) => {
       let dist = zipcodes.distance(agent.zip, this.state.zip)
       if (dist <= this.state.dist){
         return (
@@ -50,6 +51,7 @@ export default class Home extends Component {
             <div className='agentName'>{agent.name}</div>
             <div className='agentCity'>{agent.city}</div>
             <div className='agentDist'>{dist ? dist + ' miles' : ''}</div>
+            <div className='agentLast'>{`${new Date(+agent.last).toLocaleDateString('en-US')} ${new Date(+agent.last).toLocaleTimeString('en-US')}`}</div>
           </div>
         )
       } else return
@@ -79,6 +81,7 @@ export default class Home extends Component {
             <div className='agentName' style={{fontWeight: '700'}}>Name</div>
             <div className='agentCity' style={{fontWeight: '700'}}>City</div>
             <div className='agentDist' style={{fontWeight: '700'}}>Distance</div>
+            <div className='agentLast' style={{fontWeight: '700'}}>Last Lead Received</div>
           </div>
           {list}
         </div>
