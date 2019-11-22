@@ -50,7 +50,7 @@ export default class Home extends Component {
           <div key={i} className='agentLine'>
             <div className='agentName'>{agent.name}</div>
             <div className='agentCity'>{agent.city}</div>
-            <div className='agentDist'>{dist ? dist + ' miles' : ''}</div>
+            <div className='agentDist'>{this.state.zip ? dist + ' miles' : ''}</div>
             <div className='agentLast'>{`${new Date(+agent.last).toLocaleDateString('en-US')} ${new Date(+agent.last).toLocaleTimeString('en-US')}`}</div>
           </div>
         )
