@@ -6,7 +6,7 @@ export default class Home extends Component {
     super()
     this.state = {
       zip: '',
-      dist: '',
+      dist: 15,
       agents:[
         {name: 'Wyatt', zip: 84101},
         {name: 'JoAnn', zip: 84119},
@@ -15,8 +15,14 @@ export default class Home extends Component {
     }
   }
 
-  handleInput(val){
-    this.setState({zip: val})
+  handleInput(field, val){
+    this.setState({[field]: val})
+  }
+
+  updateDist(val){
+    if(val >= 0){
+      this.setState({dist: val})
+    }
   }
 
   // calcDist(){
@@ -30,7 +36,7 @@ export default class Home extends Component {
     let {agents} = this.state
     let list = agents.map((agent, i) => {
       let dist = zipcodes.distance(agent.zip, this.state.zip)
-      if (dist <= 15){
+      if (dist <= this.state.dist){
         return (
           <div key={i}>
             <h4>{agent.name} <br/> Distance: {dist}</h4>
@@ -42,8 +48,12 @@ export default class Home extends Component {
     return(
       <div>
         <h1>Home</h1>
-        <input onChange={(e)=>this.handleInput(e.target.value)} type="number"/>
-        <button onClick={()=>this.calcDist()}>Get Distance</button>
+        <p>{this.state.dist} miles</p>
+        <button onClick={()=>this.updateDist(this.state.dist + 1)}>+</button>
+        <button onClick={()=>this.updateDist(this.state.dist - 1)}>-</button>
+        <br/>
+        <input onChange={(e)=>this.handleInput('zip', e.target.value)} type="number" placeholder='zip code'/>
+        {/* <button onClick={()=>this.calcDist()}>Get Distance</button> */}
         {list}
       </div>
     )
