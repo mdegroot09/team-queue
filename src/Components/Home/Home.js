@@ -29,12 +29,14 @@ export default class Home extends Component {
   render(){
     let {agents} = this.state
     let list = agents.map((agent, i) => {
-      return (
-        <div key={i}>
-          <h4>{agent.name}</h4>
-          <h4>Distance: {zipcodes.distance(agent.zip, this.state.zip)}</h4>
-        </div>
-      )
+      let dist = zipcodes.distance(agent.zip, this.state.zip)
+      if (dist <= 15){
+        return (
+          <div key={i}>
+            <h4>{agent.name} <br/> Distance: {dist}</h4>
+          </div>
+        )
+      } else return
     })
     
     return(
