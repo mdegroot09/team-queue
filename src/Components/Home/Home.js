@@ -19,19 +19,20 @@ export default class Home extends Component {
     this.setState({zip: val})
   }
 
-  calcDist(){
-    var zip = this.state.zip
-    var wyatt = 84004
-    var dist = zipcodes.distance(wyatt, zip)
-    this.setState({dist: dist})
-  }
+  // calcDist(){
+  //   var zip = this.state.zip
+  //   var wyatt = 84004
+  //   var dist = zipcodes.distance(wyatt, zip)
+  //   this.setState({dist: dist})
+  // }
 
   render(){
     let {agents} = this.state
     let list = agents.map((agent, i) => {
       return (
         <div key={i}>
-          <h4>{agent.agent}</h4>
+          <h4>{agent.name}</h4>
+          <h4>Distance: {zipcodes.distance(agent.zip, this.state.zip)}</h4>
         </div>
       )
     })
