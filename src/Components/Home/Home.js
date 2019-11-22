@@ -8,9 +8,13 @@ export default class Home extends Component {
       zip: '',
       dist: 15,
       agents:[
-        {name: 'Wyatt Koeven', address: 1, zip: 84101},
-        {name: 'JoAnn Ortega-Petty', address: 1, zip: 84119},
-        {name: 'Eric Nelson', address: 1, zip: 84604}
+        {name: 'Wyatt Koeven', city: 'Salt Lake City', zip: 84101},
+        {name: 'JoAnn Ortega-Petty', city: 'Taylorsville', zip: 84119},
+        {name: 'Eric Nelson', city: 'Cedar Hills', zip: 84604},
+        {name: 'Jeremy Doggett', city: 'Sandy', zip: 84092},
+        {name: 'Jake Richins', city: 'Draper', zip: 84020},
+        {name: 'Juan Gomez', city: 'Saratoga Springs', zip: 84045},
+        {name: 'Kodi Paulson', city: 'Eagle Mountain', zip: 84005}
       ]
     }
     // var interval = ''
@@ -44,7 +48,8 @@ export default class Home extends Component {
         return (
           <div key={i} className='agentLine'>
             <div className='agentName'>{agent.name}</div>
-            <div className='agentDist'>Distance: {dist}</div>
+            <div className='agentCity'>{agent.city}</div>
+            <div className='agentDist'>{dist ? dist + ' miles' : ''}</div>
           </div>
         )
       } else return
@@ -52,7 +57,7 @@ export default class Home extends Component {
     
     return(
       <div>
-        <h1>Home</h1>
+        <h1>Black Ops Queue</h1>
         <p>{this.state.dist} miles</p>
         <button 
           // onKeyDown={this.updateDistFast(this.state.dist, 'up')} 
@@ -72,6 +77,7 @@ export default class Home extends Component {
         <div className='agentTable'>
           <div className='agentLine'>
             <div className='agentName' style={{fontWeight: '700'}}>Name</div>
+            <div className='agentCity' style={{fontWeight: '700'}}>City</div>
             <div className='agentDist' style={{fontWeight: '700'}}>Distance</div>
           </div>
           {list}
