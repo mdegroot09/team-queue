@@ -53,7 +53,7 @@ export default class Home extends Component {
       let dist = zipcodes.distance(agent.zip, this.state.zip)
       // if (dist <= this.state.dist){
         return (
-          <div key={i} className='agentLine' style={{backgroundColor: i === 0 ? '#58dbc2' : 'white'}}>
+          <div key={i} className='agentLine' style={{backgroundColor: i === 0 ? 'rgba(88, 219, 194, .2)' : 'white'}}>
             <div className='agentName'>{agent.name}</div>
             <div className='agentCity'>{agent.city}</div>
             <div className='agentDist'>{this.state.zip ? dist + ' miles' : ''}</div>
@@ -66,20 +66,23 @@ export default class Home extends Component {
     return(
       <div>
         <h1>Black Ops Queue</h1>
-        <p>{this.state.dist} miles</p>
-        <button 
-          // onKeyDown={this.updateDistFast(this.state.dist, 'up')} 
-          // onKeyUp={this.cancelDistFast(this.state.dist, 'up')}
-          onClick={()=>this.updateDist(this.state.dist + 1)}>
-          +
-        </button>
-        <button 
-          // onKeyDown={this.updateDistFast(this.state.dist, 'down')} 
-          // onKeyUp={this.cancelDistFast(this.state.dist, 'down')}
-          onClick={()=>this.updateDist(this.state.dist - 1)}>
-          -
-        </button>
-        <br/>
+        <div className='milesDist'>
+          <button 
+            className='button'
+            // onKeyDown={this.updateDistFast(this.state.dist, 'down')} 
+            // onKeyUp={this.cancelDistFast(this.state.dist, 'down')}
+            onClick={()=>this.updateDist(this.state.dist - 1)}>
+            -
+          </button>
+          <p style={{margin: '0 10px'}}>{this.state.dist} miles</p>
+          <button 
+            className='button'
+            // onKeyDown={this.updateDistFast(this.state.dist, 'up')} 
+            // onKeyUp={this.cancelDistFast(this.state.dist, 'up')}
+            onClick={()=>this.updateDist(this.state.dist + 1)}>
+            +
+          </button>
+        </div>
         <input onChange={(e)=>this.handleInput('zip', e.target.value)} type="number" placeholder='zip code'/>
         {/* <button onClick={()=>this.calcDist()}>Get Distance</button> */}
         <div className='agentTable'>
