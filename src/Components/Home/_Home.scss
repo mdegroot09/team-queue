@@ -13,6 +13,13 @@
   height: 30px;
   width: 30px;
   outline: none;
+  background-color: rgb(88, 219, 194);
+  border: 1px solid rgb(43, 121, 106);
+}
+
+.button:hover {
+  background-color: rgb(80, 210, 185);
+  cursor: pointer;
 }
 
 .zipInput {
