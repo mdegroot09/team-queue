@@ -83,7 +83,7 @@ export default class Home extends Component {
             +
           </button>
         </div>
-        <input onChange={(e)=>this.handleInput('zip', e.target.value)} type="number" placeholder='zip code'/>
+        <input className='zipInput' onChange={(e)=>this.handleInput('zip', e.target.value)} type="number" placeholder='zip code'/>
         {/* <button onClick={()=>this.calcDist()}>Get Distance</button> */}
         <div className='agentTable'>
           <div className='agentLine'>
